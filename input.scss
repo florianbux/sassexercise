@@ -1,0 +1,191 @@
+@import "colors";
+@import "normalize";
+
+$font: 'Franklin Gothic Medium',
+'Arial Narrow',
+Arial,
+sans-serif;
+
+@mixin un-list {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin li-item {
+    list-style: none;
+    padding: 1rem;
+}
+
+@mixin flexcard {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+@mixin styles-main-content {
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: $font;
+}
+
+nav {
+    ul {
+        align-items: center;
+        height: 4rem;
+
+        li {
+            a {
+                color: $header-a;
+            }
+        }
+    }
+}
+
+nav,
+footer {
+    ul {
+        @include un-list;
+
+        li {
+            @include li-item;
+
+            a {
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-family: $font;
+            }
+        }
+    }
+}
+
+header {
+    height: 20rem;
+    background-image: url(images_website/header.jpg);
+    background-size: cover;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 1rem;
+
+    h1 {
+        font-family: $font;
+        font-size: 2rem;
+    }
+}
+
+.cards {
+    .card {
+        padding: 1rem;
+        background-color: $background;
+        margin: 1rem;
+        border: 2px solid $border;
+        border-radius: 5px;
+
+        .img {
+            background-size: cover;
+            height: 10rem;
+            width: 100%;
+            background-position: center;
+        }
+
+        .card-text {
+            padding-top: 1rem;
+            font-family: $font;
+        }
+    }
+}
+
+.cards,
+.card {
+    @include flexcard;
+}
+
+.img-mountain {
+    background-image: url(images_website/mountain.jpg);
+}
+
+.img-surfer {
+    background-image: url(images_website/surfer.jpg);
+}
+
+.img-tree {
+    background-image: url(images_website/tree.jpg);
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: 1rem;
+
+    aside {
+        border: 2px solid $border;
+    }
+}
+
+aside,
+article {
+    @include styles-main-content;
+}
+
+footer {
+    ul {
+        height: 4rem;
+        background-color: $background2;
+
+        li {
+            a {
+                color: $footer-a;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    nav>ul {
+        justify-content: flex-end;
+    }
+
+    .card {
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        width: 80%;
+        margin: 0.5rem;
+
+        .card-text {
+            padding: 0 1rem 1rem 1rem;
+        }
+    }
+
+    main {
+        flex-flow: row nowrap;
+
+        article {
+            width: 50%;
+        }
+
+        aside {
+            width: 25%;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .cards {
+        flex-flow: row wrap;
+        justify-content: center;
+
+        .card {
+            width: 45%;
+
+            img {
+                width: 40%;
+            }
+
+            .card-text {
+                width: 60%;
+            }
+        }
+    }
+}
